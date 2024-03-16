@@ -12,6 +12,7 @@ import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import dayjs from "dayjs";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import SendIcon from "@mui/icons-material/Send";
 
 export const SelectLocation = () => {
   const [location, setLocation] = useState("");
@@ -41,9 +42,9 @@ export const SelectLocation = () => {
             label="場所"
             onChange={handleChange}
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value={10}>京都産業大学</MenuItem>
+            <MenuItem value={20}>関西学院大学</MenuItem>
+            <MenuItem value={30}>国際信州学院大学</MenuItem>
           </Select>
         </FormControl>
       </Box>
@@ -57,7 +58,11 @@ export const SelectLocation = () => {
       >
         <TextField id="outlined-basic" label="名前" variant="outlined" />
       </Box>
-      <Button variant="contained" onClick={() => navigate("/order")}>
+      <Button
+        variant="contained"
+        endIcon={<SendIcon />}
+        onClick={() => navigate("/order")}
+      >
         送信
       </Button>
     </>
