@@ -7,7 +7,7 @@ type Title = {
 export const Header: FC<Title> = ({ title }) => {
   return (
     <>
-      <h1>{title}</h1>
+      <h1 className="text-2xl h-[50px]">{title}</h1>
     </>
   );
 };

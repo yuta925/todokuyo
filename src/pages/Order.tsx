@@ -4,19 +4,53 @@ import { Header } from "../components/Header/Header";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { Button } from "@mui/material";
 import { CartModal } from "../components/CartModal/CartModal";
-import { useState } from "react";
+import { useState, createContext } from "react";
 import { SimpleDialog } from "../components/Diaglog/Dialog";
+import ReactLoading from "react-loading";
+
+export type GoodProps = {
+  good: string;
+  selected: boolean;
+};
+
+export const OrderContext = createContext<{
+  goods: GoodProps[];
+  setGoods: React.Dispatch<React.SetStateAction<GoodProps[]>>;
+  editModalIsOpen: boolean;
+  setEditModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}>(
+  {} as {
+    goods: GoodProps[];
+    setGoods: React.Dispatch<React.SetStateAction<GoodProps[]>>;
+    editModalIsOpen: boolean;
+    setEditModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  }
+);
 
 export const Order = () => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const [goods, setGoods] = useState<GoodProps[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [editModalIsOpen, setEditModalIsOpen] = useState(false);
 
   const submitFn = () => {
-    setOpen(true);
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      setOpen(true);
+    }, 1000);
   };
 
   return (
-    <>
+    <OrderContext.Provider
+      value={{
+        goods: goods,
+        setGoods: setGoods,
+        editModalIsOpen: editModalIsOpen,
+        setEditModalIsOpen: setEditModalIsOpen,
+      }}
+    >
       <div className="grid grid-cols-3 grid-rows-2 h-[100px] sticky top-0 z-20">
         <Button
           variant="contained"
@@ -31,7 +65,16 @@ export const Order = () => {
         <SimpleDialog open={open} />
         <CartModal />
       </div>
+      {isLoading ?? (
+        <ReactLoading
+          type="spin"
+          color="black"
+          height="200px"
+          width="20px"
+          className="mx-auto mt-[200px]"
+        />
+      )}
       <GoodsList />
-    </>
+    </OrderContext.Provider>
   );
 };

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Button, Dialog } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+
 export type DialogProps = {
   open: boolean;
 };

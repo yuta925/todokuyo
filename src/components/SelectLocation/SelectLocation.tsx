@@ -10,7 +10,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import dayjs from "dayjs";
-import { Button } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import SendIcon from "@mui/icons-material/Send";
 
@@ -23,7 +23,7 @@ export const SelectLocation = () => {
   };
 
   return (
-    <>
+    <div className="flex flex-col gap-y-[80px]">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["DatePicker"]}>
           <DemoItem>
@@ -32,7 +32,11 @@ export const SelectLocation = () => {
         </DemoContainer>
       </LocalizationProvider>
 
-      <Box sx={{ minWidth: 120 }}>
+      <Box
+        sx={{
+          minWidth: 120,
+        }}
+      >
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">場所</InputLabel>
           <Select
@@ -48,23 +52,37 @@ export const SelectLocation = () => {
           </Select>
         </FormControl>
       </Box>
-      <Box
-        component="form"
-        sx={{
-          "& > :not(style)": { m: 1, width: "25ch" },
-        }}
-        noValidate
-        autoComplete="off"
-      >
+
+      <Grid container direction="column" justifyContent="center">
+        {/* <Box
+          component="form"
+          sx={
+            {
+              // minWidth: 120,
+            }
+          }
+          noValidate
+          autoComplete="off"
+        > */}
         <TextField id="outlined-basic" label="名前" variant="outlined" />
-      </Box>
-      <Button
-        variant="contained"
-        endIcon={<SendIcon />}
-        onClick={() => navigate("/order")}
-      >
-        送信
-      </Button>
-    </>
+        {/* </Box> */}
+      </Grid>
+
+      <Grid container direction="column" justifyContent="center">
+        <Button
+          variant="contained"
+          endIcon={<SendIcon />}
+          onClick={() => navigate("/order")}
+          sx={{
+            // display: "flex",
+            // flexDirection: "column",
+            // alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          送信
+        </Button>
+      </Grid>
+    </div>
   );
 };
