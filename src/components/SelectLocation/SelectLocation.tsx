@@ -13,9 +13,10 @@ import dayjs from "dayjs";
 import { Button, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import SendIcon from "@mui/icons-material/Send";
+import { Locations } from "../../assets/Locations";
 
 export const SelectLocation = () => {
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState<string>("");
   const navigate = useNavigate();
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -59,9 +60,14 @@ export const SelectLocation = () => {
                 label="場所"
                 onChange={handleChange}
               >
-                <MenuItem value={10}>京都産業大学</MenuItem>
+                {Locations.map((location) => (
+                  <MenuItem value={location.id} key={location.address}>
+                    {location.name}
+                  </MenuItem>
+                ))}
+                {/* <MenuItem value={10}>京都産業大学</MenuItem>
                 <MenuItem value={20}>関西学院大学</MenuItem>
-                <MenuItem value={30}>国際信州学院大学</MenuItem>
+                <MenuItem value={30}>国際信州学院大学</MenuItem> */}
               </Select>
             </FormControl>
           </Box>
