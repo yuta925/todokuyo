@@ -1,13 +1,17 @@
 import { ImageList, ImageListItem } from "@mui/material";
 import { useContext } from "react";
 import { OrderContext } from "../../pages/Order";
+import { Goods } from "../../assets/Goods";
 
 export const GoodsList = () => {
   const { goods, setGoods } = useContext(OrderContext);
 
   const selectGood = ({ good }: { good: any }) => {
     // alert("登録されました");
-    setGoods([...goods, { good: good.goodname, selected: true }]);
+    setGoods([
+      ...goods,
+      { name: good.name, good: good.goodname, selected: true },
+    ]);
     console.log(goods);
   };
 
@@ -25,7 +29,9 @@ export const GoodsList = () => {
               onClick={() => selectGood({ good })}
             />
             {goods.map((good) => {
-              return <>{good.selected ?? <h1>登録済み</h1>}</>;
+              return (
+                <>{good.selected ?? <h1 className="bg-black">登録済み</h1>}</>
+              );
             })}
           </ImageListItem>
         ))}
@@ -33,14 +39,3 @@ export const GoodsList = () => {
     </div>
   );
 };
-
-const Goods = [
-  { goodname: "鹿せんべい", img: "sikasenbei.png" },
-  { goodname: "いちご", img: "itigo.png" },
-  { goodname: "バナナ", img: "banana.png" },
-  { goodname: "ヨーグルト", img: "yogurt.png" },
-  { goodname: "牛乳", img: "gyunyu.png" },
-  { goodname: "納豆", img: "natto.png" },
-  { goodname: "沢庵", img: "takuwan.png" },
-  { goodname: "味噌", img: "miso.png" },
-];

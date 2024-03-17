@@ -23,38 +23,54 @@ export const SelectLocation = () => {
   };
 
   return (
-    <div className="flex flex-col gap-y-[80px]">
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DemoContainer components={["DatePicker"]}>
-          <DemoItem>
-            <MobileDatePicker defaultValue={dayjs()} />
-          </DemoItem>
-        </DemoContainer>
-      </LocalizationProvider>
+    <form>
+      <div className="flex basis-8 grow flex-col gap-y-10">
+        <div>
+          <p>日程を入力してください</p>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DemoContainer
+              components={["DatePicker"]}
+              sx={{
+                display: "flex",
+                width: "80%",
+                marginLeft: "10%",
+              }}
+            >
+              <DemoItem>
+                <MobileDatePicker defaultValue={dayjs()} />
+              </DemoItem>
+            </DemoContainer>
+          </LocalizationProvider>
+        </div>
 
-      <Box
-        sx={{
-          minWidth: 120,
-        }}
-      >
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">場所</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={location}
-            label="場所"
-            onChange={handleChange}
+        <div>
+          <p>場所を入力してください</p>
+          <Box
+            sx={{
+              minWidth: 120,
+            }}
           >
-            <MenuItem value={10}>京都産業大学</MenuItem>
-            <MenuItem value={20}>関西学院大学</MenuItem>
-            <MenuItem value={30}>国際信州学院大学</MenuItem>
-          </Select>
-        </FormControl>
-      </Box>
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">場所</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={location}
+                label="場所"
+                onChange={handleChange}
+              >
+                <MenuItem value={10}>京都産業大学</MenuItem>
+                <MenuItem value={20}>関西学院大学</MenuItem>
+                <MenuItem value={30}>国際信州学院大学</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
+        </div>
 
-      <Grid container direction="column" justifyContent="center">
-        {/* <Box
+        <div>
+          <p>名前を入力してください</p>
+          <Grid container direction="column" justifyContent="center">
+            {/* <Box
           component="form"
           sx={
             {
@@ -64,25 +80,27 @@ export const SelectLocation = () => {
           noValidate
           autoComplete="off"
         > */}
-        <TextField id="outlined-basic" label="名前" variant="outlined" />
-        {/* </Box> */}
-      </Grid>
+            <TextField id="outlined-basic" label="名前" variant="outlined" />
+            {/* </Box> */}
+          </Grid>
+        </div>
 
-      <Grid container direction="column" justifyContent="center">
-        <Button
-          variant="contained"
-          endIcon={<SendIcon />}
-          onClick={() => navigate("/order")}
-          sx={{
-            // display: "flex",
-            // flexDirection: "column",
-            // alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          送信
-        </Button>
-      </Grid>
-    </div>
+        <Grid container direction="column" justifyContent="center">
+          <Button
+            variant="contained"
+            endIcon={<SendIcon />}
+            onClick={() => navigate("/order")}
+            sx={{
+              // display: "flex",
+              // flexDirection: "column",
+              // alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            送信
+          </Button>
+        </Grid>
+      </div>
+    </form>
   );
 };

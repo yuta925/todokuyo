@@ -1,14 +1,16 @@
-import { useNavigate } from "react-router-dom";
-import { GoodsList } from "../components/GoodsList/GoodsList";
-import { Header } from "../components/Header/Header";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { Button } from "@mui/material";
+import { SimpleDialog } from "../components/Diaglog/OrderDialog";
+
 import { CartModal } from "../components/CartModal/CartModal";
-import { useState, createContext } from "react";
-import { SimpleDialog } from "../components/Diaglog/Dialog";
+import { GoodsList } from "../components/GoodsList/GoodsList";
+
 import ReactLoading from "react-loading";
+import { useState, createContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 export type GoodProps = {
+  name: string;
   good: string;
   selected: boolean;
 };
@@ -71,7 +73,7 @@ export const Order = () => {
           color="black"
           height="200px"
           width="20px"
-          className="mx-auto mt-[200px]"
+          className="mx-auto mt-[200px] z-30"
         />
       )}
       <GoodsList />

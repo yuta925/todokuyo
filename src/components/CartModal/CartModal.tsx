@@ -52,7 +52,7 @@ export const CartModal = () => {
             <h1>買い物かごに何も入っていません</h1>
           ) : (
             <Demo>
-              <List dense={dense}>
+              <List dense={true}>
                 {goods.map((good) => (
                   <ListItem
                     secondaryAction={
