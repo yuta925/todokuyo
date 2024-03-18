@@ -16,11 +16,13 @@ export const CheckDialog: FC = () => {
   };
 
   return (
-    <>
+    <div className="flex flex-col m-4">
       <h1>注文してもよろしいですか</h1>
+    <div className="flex flex-row justify-center">
       <Button onClick={submitFn}>はい</Button>
       <Button onClick={() => setOpen1(false)}>いいえ</Button>
+    </div>
       <SimpleDialog />
-    </>
+    </div>
   );
 };

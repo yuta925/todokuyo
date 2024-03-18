@@ -96,7 +96,7 @@ export const SelectLocation = () => {
             onClick={() => navigate("/order")}
             className="w-[200px] h-[200px] bg-blue-500 text-white round rounded-[30px] p-4"
           >
-            送信
+            <p className="text-2xl">送信</p>
           </button>
         </div>
       </div>
