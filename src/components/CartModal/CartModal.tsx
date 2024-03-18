@@ -41,13 +41,18 @@ export const CartModal = () => {
 
       <Modal
         isOpen={editModalIsOpen}
-        className="mt-20 bg-green h-[50%] "
+        className="mt-20 bg-white h-[100%] p-5"
         ariaHideApp={false}
       >
-        <Button onClick={() => setEditModalIsOpen(false)}>
-          <CancelIcon />
-          閉じる
-        </Button>
+        <div className="flex justify-end -p-5">
+          <Button
+            onClick={() => setEditModalIsOpen(false)}
+          >
+            <CancelIcon fontSize="large" />
+            <p className="text-3xl">閉じる</p>
+          </Button>
+        </div>
+
         <Grid item xs={12} md={6}>
           <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
             注文リスト
