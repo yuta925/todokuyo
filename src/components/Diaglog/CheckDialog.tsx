@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { Button, Dialog } from "@mui/material";
+import { Button } from "@mui/material";
 import { SimpleDialog } from "./OrderDialog";
 import { OrderContext } from "../../pages/Order";
 import { useContext } from "react";
 
 export const CheckDialog: FC = () => {
-  const { open1, setOpen1, setOpen2, setIsLoading } = useContext(OrderContext);
+  const { setOpen1, setOpen2, setIsLoading } = useContext(OrderContext);
 
   const submitFn = () => {
     setIsLoading(true);
@@ -17,11 +17,9 @@ export const CheckDialog: FC = () => {
 
   return (
     <>
-      <Dialog open={open1}>
-        <h1>注文してもよろしいですか</h1>
-        <Button onClick={submitFn}>はい</Button>
-        <Button onClick={() => setOpen1(false)}>いいえ</Button>
-      </Dialog>
+      <h1>注文してもよろしいですか</h1>
+      <Button onClick={submitFn}>はい</Button>
+      <Button onClick={() => setOpen1(false)}>いいえ</Button>
       <SimpleDialog />
     </>
   );

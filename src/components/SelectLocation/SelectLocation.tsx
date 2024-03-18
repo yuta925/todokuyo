@@ -76,16 +76,16 @@ export const SelectLocation = () => {
         <div>
           <p>名前を入力してください</p>
           <Grid container direction="column" justifyContent="center">
-            {/* <Box
-          component="form"
-          sx={
-            {
-              // minWidth: 120,
-            }
-          }
-          noValidate
-          autoComplete="off"
-        > */}
+            <Box
+              component="form"
+              sx={
+                {
+                  // minWidth: 120,
+                }
+              }
+              noValidate
+              autoComplete="off"
+            />
             <TextField id="outlined-basic" label="名前" variant="outlined" />
             {/* </Box> */}
           </Grid>
