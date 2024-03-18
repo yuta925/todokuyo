@@ -1,5 +1,4 @@
 import { Button } from "@mui/material";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
@@ -15,30 +14,22 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import { useContext } from "react";
 import { OrderContext } from "../../pages/Order";
 import Modal from "react-modal";
+import { useModalScrollLock } from "../../hooks/useModalScrollLock";
 
 const Demo = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
 }));
 
+export const MODAL_ID = "modal";
+
 export const CartModal = () => {
-  // const [dense, setDense] = useState(false);
   const { goods, setGoods, editModalIsOpen, setEditModalIsOpen } =
     useContext(OrderContext);
 
-  const clickFn = () => {
-    setEditModalIsOpen(true);
-  };
+  useModalScrollLock({ isModalOpen: editModalIsOpen });
 
   return (
-    <>
-      <Button
-        variant="contained"
-        endIcon={<ShoppingCartIcon />}
-        onClick={clickFn}
-      >
-        カート
-      </Button>
-
+    <div id={MODAL_ID}>
       <Modal
         isOpen={editModalIsOpen}
         className="mt-[50px] bg-white h-[100%] px-5"
@@ -50,6 +41,11 @@ export const CartModal = () => {
             <p className="text-3xl">閉じる</p>
           </Button>
         </div>
+        {/* 
+        <Button onClick={() => setEditModalIsOpen(false)}>
+          <CancelIcon fontSize="large" />
+          <p className="text-3xl">閉じる</p>
+        </Button> */}
 
         <Grid item xs={12} md={6}>
           <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
@@ -84,6 +80,10 @@ export const CartModal = () => {
                       </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={good.good} />
+                    <ListItemText
+                      primary={good.selectNum}
+                      className="right-0"
+                    />
                   </ListItem>
                 ))}
               </List>
@@ -91,6 +91,6 @@ export const CartModal = () => {
           )}
         </Grid>
       </Modal>
-    </>
+    </div>
   );
 };

@@ -6,8 +6,15 @@ type Title = {
 
 export const Header: FC<Title> = ({ title }) => {
   return (
-    <div className="min-h-32 flex items-center justify-center">
-      <h1 className="text-2xl h-[50px]">{title}</h1>
+    <div className="grid grid-cols-8 mt-6 ">
+      <img
+        src="Icon.png"
+        alt="app_icon"
+        className="grid col-start-2 col-end-4 ml-2 w-[100px] h-[100px] justify-center content-center round rounded-full"
+      />
+      <h1 className="grid text-2xl col-start-4 col-end-8 justify-center content-center">
+        {title}
+      </h1>
     </div>
   );
 };

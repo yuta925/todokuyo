@@ -7,12 +7,23 @@ export const GoodsList = () => {
   const { goods, setGoods } = useContext(OrderContext);
 
   const selectGood = ({ good }: { good: any }) => {
-    // alert("登録されました");
-    setGoods([
-      ...goods,
-      { name: good.name, good: good.goodname, selected: true },
-    ]);
-    console.log(goods);
+    const existingGoodIndex = goods.findIndex((g) => g.good === good.goodname);
+
+    if (existingGoodIndex !== -1) {
+      // The good already exists in the array, so we'll increase its selectNum
+      const newGoods = [...goods];
+      newGoods[existingGoodIndex] = {
+        ...newGoods[existingGoodIndex],
+        selectNum: newGoods[existingGoodIndex].selectNum + 1,
+      };
+      setGoods(newGoods);
+    } else {
+      // The good doesn't exist in the array, so we'll add it
+      setGoods([
+        ...goods,
+        { name: good.name, good: good.goodname, selected: true, selectNum: 1 },
+      ]);
+    }
   };
 
   return (
