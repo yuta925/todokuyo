@@ -35,7 +35,7 @@ export const GoodsList = () => {
               alt={good.goodname}
               onClick={() => {
                 selectGood({ good });
-                good.selected = true;
+                good.selected = !good.selected;
               }}
             />
             {goods.map((good) => {

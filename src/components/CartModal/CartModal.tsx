@@ -15,6 +15,8 @@ import { useContext } from "react";
 import { OrderContext } from "../../pages/Order";
 import Modal from "react-modal";
 import { useModalScrollLock } from "../../hooks/useModalScrollLock";
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 const Demo = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -52,35 +54,39 @@ export const CartModal = () => {
           ) : (
             <Demo>
               <List dense={true}>
-                {goods.map((good) => (
-                  <ListItem
-                    secondaryAction={
-                      <IconButton
-                        edge="end"
-                        aria-label="delete"
-                        onClick={() => {
-                          setGoods((prevGoods) =>
-                            prevGoods.filter((a) => a.good !== good.good)
-                          );
-                        }}
+                {goods.map((good) => {
+                  return (
+                    good.selected && (
+                      <ListItem
+                        secondaryAction={
+                          <IconButton
+                            edge="end"
+                            aria-label="delete"
+                            onClick={() => {
+                              setGoods((prevGoods) =>
+                                prevGoods.filter((a) => a.good !== good.good)
+                              );
+                            }}
+                          >
+                            <DeleteIcon />
+                          </IconButton>
+                        }
                       >
-                        <DeleteIcon />
-                      </IconButton>
-                    }
-                  >
-                    <ListItemAvatar>
-                      <Avatar>
-                        {/** ここのアイコン変える */}
-                        <FolderIcon />
-                      </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText primary={good.good} />
-                    <ListItemText
-                      primary={good.selectNum}
-                      className="right-0"
-                    />
-                  </ListItem>
-                ))}
+                        <ListItemAvatar>
+                          <Avatar>
+                            {/** ここのアイコン変える */}
+                            <FolderIcon />
+                          </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText primary={good.good} />
+                        <ListItemText
+                          primary={good.selectNum}
+                          className="right-0"
+                        />
+                      </ListItem>
+                    )
+                  );
+                })}
               </List>
             </Demo>
           )}
