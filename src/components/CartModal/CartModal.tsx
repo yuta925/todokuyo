@@ -11,6 +11,7 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import FolderIcon from "@mui/icons-material/Folder";
 import DeleteIcon from "@mui/icons-material/Delete";
+import CancelIcon from "@mui/icons-material/Cancel";
 import { useContext } from "react";
 import { OrderContext } from "../../pages/Order";
 import Modal from "react-modal";
@@ -40,17 +41,23 @@ export const CartModal = () => {
 
       <Modal
         isOpen={editModalIsOpen}
-        className="mt-20 bg-green h-[50%] "
+        className="mt-20 bg-white h-[100%] p-5"
         ariaHideApp={false}
       >
-        <Button onClick={() => setEditModalIsOpen(false)}>閉じる</Button>
+        <div className="flex justify-end -p-5">
+          <Button onClick={() => setEditModalIsOpen(false)}>
+            <CancelIcon fontSize="large" />
+            <p className="text-3xl">閉じる</p>
+          </Button>
+        </div>
+
         <Grid item xs={12} md={6}>
-          <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div" align="center">
-            
-            注文リスト
+          <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+            <p className="text-5xl font-bold">注文リスト</p>
+            <hr className="h-2 bg-gray-200 border-0 dark:bg-gray-700 rounded"></hr>
           </Typography>
           {goods.length === 0 ? (
-            <h1 className="text-center">買い物かごに何も入っていません</h1>
+            <h1 className="text-2xl">買い物かごに何も入っていません</h1>
           ) : (
             <Demo>
               <List dense={true}>
