@@ -9,9 +9,15 @@ export const SimpleDialog: FC = () => {
 
   return (
     <>
-      <Dialog open={open2}>
-        <h1>注文を確定しました</h1>
-        <Button onClick={() => navigate("/")}>Homeへ戻る</Button>
+      <Dialog open={open2} className="flex flex-row justify-center">
+        <h1 className="mx-[20px] my-[40px] text-[25px]">
+          <span>注文を確定しました</span>
+        </h1>
+        <div className="flex justify-center mb-6">
+          <Button className="w-[60%]" onClick={() => navigate("/")} >
+            <span className="w-[80%] text-[18px]">Homeへ戻る</span>
+          </Button>
+        </div>
       </Dialog>
     </>
   );

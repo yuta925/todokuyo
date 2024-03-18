@@ -45,11 +45,12 @@ export const CartModal = () => {
       >
         <Button onClick={() => setEditModalIsOpen(false)}>閉じる</Button>
         <Grid item xs={12} md={6}>
-          <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+          <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div" align="center">
+            
             注文リスト
           </Typography>
           {goods.length === 0 ? (
-            <h1>買い物かごに何も入っていません</h1>
+            <h1 className="text-center">買い物かごに何も入っていません</h1>
           ) : (
             <Demo>
               <List dense={true}>
