@@ -7,7 +7,7 @@ import { GoodsList } from "../components/GoodsList/GoodsList";
 import ReactLoading from "react-loading";
 import { useState, createContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { CheckDialog } from "../components/Diaglog/CheckDialog";
+import { Dialog1 } from "../components/Diaglog/Diallog";
 
 export type GoodProps = {
   name: string;
@@ -24,6 +24,8 @@ export const OrderContext = createContext<{
   setOpen1: React.Dispatch<React.SetStateAction<boolean>>;
   open2: boolean;
   setOpen2: React.Dispatch<React.SetStateAction<boolean>>;
+  openError: boolean;
+  setOpenError: React.Dispatch<React.SetStateAction<boolean>>;
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }>(
@@ -36,6 +38,8 @@ export const OrderContext = createContext<{
     setOpen1: React.Dispatch<React.SetStateAction<boolean>>;
     open2: boolean;
     setOpen2: React.Dispatch<React.SetStateAction<boolean>>;
+    openError: boolean;
+    setOpenError: React.Dispatch<React.SetStateAction<boolean>>;
     isLoading: boolean;
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
   }
@@ -45,6 +49,7 @@ export const Order = () => {
   const navigate = useNavigate();
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
+  const [openError, setOpenError] = useState(false);
   const [goods, setGoods] = useState<GoodProps[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [editModalIsOpen, setEditModalIsOpen] = useState(false);
@@ -64,6 +69,8 @@ export const Order = () => {
         setOpen1: setOpen1,
         open2: open2,
         setOpen2: setOpen2,
+        openError: openError,
+        setOpenError: setOpenError,
         isLoading: isLoading,
         setIsLoading: setIsLoading,
       }}
@@ -79,8 +86,8 @@ export const Order = () => {
         <Button variant="contained" color="error" onClick={submitFn}>
           確定
         </Button>
-        <CheckDialog />
         <CartModal />
+        <Dialog1 />
       </div>
       {isLoading ?? (
         <ReactLoading

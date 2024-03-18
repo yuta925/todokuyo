@@ -31,7 +31,6 @@ export const SelectLocation = () => {
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer
               components={["DatePicker"]}
-
               sx={{
                 display: "flex",
                 width: "80%",
@@ -78,23 +77,28 @@ export const SelectLocation = () => {
 
         <div>
           <p>名前を入力してください</p>
-            <Box
+          <Box
             className="ml-7"
-          // noValidate
-          // autoComplete="off"
+            // noValidate
+            // autoComplete="off"
           />
-            <TextField id="outlined-basic" label="名前" variant="outlined" sx={{flex:'flx', width:'80%', marginLeft:"10%"}}/>
-            {/* </Box> */}
+          <TextField
+            id="outlined-basic"
+            label="名前"
+            variant="outlined"
+            sx={{ flex: "flx", width: "80%", marginLeft: "10%" }}
+          />
+          {/* </Box> */}
         </div>
 
-          <div className="flex justify-center">
+        <div className="flex justify-center">
           <button
             onClick={() => navigate("/order")}
             className="w-[200px] h-[200px] bg-blue-500 text-white round rounded-[30px] p-4"
           >
             送信
           </button>
-          </div>
+        </div>
       </div>
     </form>
   );
