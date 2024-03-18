@@ -1,4 +1,5 @@
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Button } from "@mui/material";
 
 import { CartModal } from "../components/CartModal/CartModal";
@@ -13,6 +14,7 @@ export type GoodProps = {
   name: string;
   good: string;
   selected: boolean;
+  selectNum: number;
 };
 
 export const OrderContext = createContext<{
@@ -75,7 +77,7 @@ export const Order = () => {
         setIsLoading: setIsLoading,
       }}
     >
-      <div className="grid grid-cols-3 grid-rows-2 h-[100px] sticky top-0 z-20">
+      <div className="grid grid-cols-3 grid-rows-2 h-[100px] sticky top-0 z-10">
         <Button
           variant="contained"
           startIcon={<KeyboardBackspaceIcon />}
@@ -84,10 +86,17 @@ export const Order = () => {
           戻る
         </Button>
         <Button variant="contained" color="error" onClick={submitFn}>
-          確定
+          注文
+        </Button>
+        <Button
+          variant="contained"
+          endIcon={<ShoppingCartIcon />}
+          onClick={() => setEditModalIsOpen(true)}
+        >
+          カート
         </Button>
         <CartModal />
-        <Dialog1/>
+        <Dialog1 />
       </div>
       {isLoading ?? (
         <ReactLoading

@@ -25,14 +25,13 @@ export const SelectLocation = () => {
 
   return (
     <form>
-      <div className="flex basis-8 grow flex-col gap-y-10">
+      <div className="flex basis-8 grow flex-col gap-y-8">
         <div>
           <p className="ml-[10%] w-[80%] text-[30px]">日程</p>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer
               components={["DatePicker"]}
               sx={{
-                display: "flex",
                 width: "80%",
                 marginLeft: "10%",
               }}

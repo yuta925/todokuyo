@@ -6,7 +6,7 @@ type Title = {
 
 export const Header: FC<Title> = ({ title }) => {
   return (
-    <div className="grid grid-cols-8 my-8">
+    <div className="grid grid-cols-8 mt-6 ">
       <img
         src="Icon.png"
         alt="app_icon"
