@@ -55,10 +55,11 @@ export const CartModal = () => {
 
         <Grid item xs={12} md={6}>
           <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-            注文リスト
+            <p className="text-5xl font-bold">注文リスト</p>
+            <hr className="h-2 bg-gray-200 border-0 dark:bg-gray-700 rounded"></hr>
           </Typography>
           {goods.length === 0 ? (
-            <h1>買い物かごに何も入っていません</h1>
+            <h1 className="text-2xl">買い物かごに何も入っていません</h1>
           ) : (
             <Demo>
               <List dense={true}>
