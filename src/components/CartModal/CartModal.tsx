@@ -11,6 +11,7 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import FolderIcon from "@mui/icons-material/Folder";
 import DeleteIcon from "@mui/icons-material/Delete";
+import CancelIcon from "@mui/icons-material/Cancel";
 import { useContext } from "react";
 import { OrderContext } from "../../pages/Order";
 import Modal from "react-modal";
@@ -43,7 +44,10 @@ export const CartModal = () => {
         className="mt-20 bg-green h-[50%] "
         ariaHideApp={false}
       >
-        <Button onClick={() => setEditModalIsOpen(false)}>閉じる</Button>
+        <Button onClick={() => setEditModalIsOpen(false)}>
+          <CancelIcon />
+          閉じる
+        </Button>
         <Grid item xs={12} md={6}>
           <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
             注文リスト
