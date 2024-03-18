@@ -27,7 +27,7 @@ export const SelectLocation = () => {
     <form>
       <div className="flex basis-8 grow flex-col gap-y-10">
         <div>
-          <p>日程を入力してください</p>
+          <p className="ml-[10%] w-[80%] text-[30px]">日程</p>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer
               components={["DatePicker"]}
@@ -44,15 +44,9 @@ export const SelectLocation = () => {
           </LocalizationProvider>
         </div>
 
-        <div>
-          <p>場所を入力してください</p>
-          <Box
-            sx={{
-              display: "flex",
-              width: "80%",
-              marginLeft: "10%",
-            }}
-          >
+        <div className="ml-[10%] w-[80%]">
+          <p className="text-[30px]">場所</p>
+          <Box>
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">場所</InputLabel>
               <Select
@@ -75,8 +69,8 @@ export const SelectLocation = () => {
           </Box>
         </div>
 
-        <div>
-          <p>名前を入力してください</p>
+        <div className="ml-[10%] w-[80%]">
+          <p className="text-[30px]">名前</p>
           <Box
             className="ml-7"
             // noValidate
@@ -86,7 +80,7 @@ export const SelectLocation = () => {
             id="outlined-basic"
             label="名前"
             variant="outlined"
-            sx={{ flex: "flx", width: "80%", marginLeft: "10%" }}
+            className="w-full"
           />
           {/* </Box> */}
         </div>
@@ -94,9 +88,9 @@ export const SelectLocation = () => {
         <div className="flex justify-center">
           <button
             onClick={() => navigate("/order")}
-            className="w-[200px] h-[200px] bg-blue-500 text-white round rounded-[30px] p-4"
+            className="w-[200px] h-[100px] bg-blue-500 text-white round rounded-[30px] p-4"
           >
-            送信
+            <p className="text-[30px]">送信</p>
           </button>
         </div>
       </div>

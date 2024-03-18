@@ -8,8 +8,10 @@ export const Dialog1 = () => {
   const { open1, goods } = useContext(OrderContext);
 
   return (
-    <Dialog open={open1}>
+    <div className="h-[40%]">
+      <Dialog open={open1}>
       {goods.length === 0 ? <ErrorDialog /> : <CheckDialog />}
     </Dialog>
+    </div>
   );
 };

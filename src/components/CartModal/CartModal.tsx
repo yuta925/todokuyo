@@ -45,9 +45,7 @@ export const CartModal = () => {
         ariaHideApp={false}
       >
         <div className="flex justify-end -p-5">
-          <Button
-            onClick={() => setEditModalIsOpen(false)}
-          >
+          <Button onClick={() => setEditModalIsOpen(false)}>
             <CancelIcon fontSize="large" />
             <p className="text-3xl">閉じる</p>
           </Button>
