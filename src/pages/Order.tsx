@@ -77,7 +77,7 @@ export const Order = () => {
         setIsLoading: setIsLoading,
       }}
     >
-      <div className="grid grid-cols-3 grid-rows-2 h-[100px] sticky top-0 z-10">
+      <div className="grid grid-cols-3 grid-rows-1 h-[50px] sticky top-0 z-10">
         <Button
           variant="contained"
           startIcon={<KeyboardBackspaceIcon />}
