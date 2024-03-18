@@ -7,7 +7,7 @@ import { GoodsList } from "../components/GoodsList/GoodsList";
 import ReactLoading from "react-loading";
 import { useState, createContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { Dialog1 } from "../components/Diaglog/Diallog";
+import { Dialog1 } from "../components/Diaglog/Dialog";
 
 export type GoodProps = {
   name: string;
@@ -87,7 +87,7 @@ export const Order = () => {
           確定
         </Button>
         <CartModal />
-        <Dialog1 />
+        <Dialog1/>
       </div>
       {isLoading ?? (
         <ReactLoading
