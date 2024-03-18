@@ -43,9 +43,8 @@ export const CartModal = () => {
         </div>
 
         <Button onClick={() => setEditModalIsOpen(false)}>
-          {/* <CancelIcon fontSize="large" />
-            <p className="text-3xl">閉じる</p> */}
-          閉じる
+          <CancelIcon fontSize="large" />
+          <p className="text-3xl">閉じる</p>
         </Button>
         <Grid item xs={12} md={6}>
           <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
@@ -80,7 +79,10 @@ export const CartModal = () => {
                       </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={good.good} />
-                    <ListItemText primary={good.selectNum} />
+                    <ListItemText
+                      primary={good.selectNum}
+                      className="right-0"
+                    />
                   </ListItem>
                 ))}
               </List>
