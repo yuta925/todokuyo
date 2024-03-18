@@ -11,7 +11,7 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import FolderIcon from "@mui/icons-material/Folder";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { OrderContext } from "../../pages/Order";
 import Modal from "react-modal";
 
@@ -20,7 +20,7 @@ const Demo = styled("div")(({ theme }) => ({
 }));
 
 export const CartModal = () => {
-  const [dense, setDense] = useState(false);
+  // const [dense, setDense] = useState(false);
   const { goods, setGoods, editModalIsOpen, setEditModalIsOpen } =
     useContext(OrderContext);
 
