@@ -31,6 +31,7 @@ export const SelectLocation = () => {
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer
               components={["DatePicker"]}
+
               sx={{
                 display: "flex",
                 width: "80%",
@@ -48,7 +49,9 @@ export const SelectLocation = () => {
           <p>場所を入力してください</p>
           <Box
             sx={{
-              minWidth: 120,
+              display: "flex",
+              width: "80%",
+              marginLeft: "10%",
             }}
           >
             <FormControl fullWidth>
@@ -75,37 +78,23 @@ export const SelectLocation = () => {
 
         <div>
           <p>名前を入力してください</p>
-          <Grid container direction="column" justifyContent="center">
-            {/* <Box
-          component="form"
-          sx={
-            {
-              // minWidth: 120,
-            }
-          }
-          noValidate
-          autoComplete="off"
-        > */}
-            <TextField id="outlined-basic" label="名前" variant="outlined" />
+            <Box
+            className="ml-7"
+          // noValidate
+          // autoComplete="off"
+          />
+            <TextField id="outlined-basic" label="名前" variant="outlined" sx={{flex:'flx', width:'80%', marginLeft:"10%"}}/>
             {/* </Box> */}
-          </Grid>
         </div>
 
-        <Grid container direction="column" justifyContent="center">
-          <Button
-            variant="contained"
-            endIcon={<SendIcon />}
+          <div className="flex justify-center">
+          <button
             onClick={() => navigate("/order")}
-            sx={{
-              // display: "flex",
-              // flexDirection: "column",
-              // alignItems: "center",
-              justifyContent: "center",
-            }}
+            className="w-[200px] h-[200px] bg-blue-500 text-white round rounded-[30px] p-4"
           >
             送信
-          </Button>
-        </Grid>
+          </button>
+          </div>
       </div>
     </form>
   );
