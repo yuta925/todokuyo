@@ -64,6 +64,44 @@ export const CartModal = () => {
                               aria-label="delete"
                               onClick={() => {
                                 setGoods((prevGoods) =>
+                                  prevGoods.map((prevGood) =>
+                                    prevGood === good
+                                      ? {
+                                          ...prevGood,
+                                          selectNum: prevGood.selectNum + 1,
+                                        }
+                                      : prevGood
+                                  )
+                                );
+                              }}
+                              className="pl-4"
+                            >
+                              <ArrowUpwardIcon />
+                            </IconButton>
+                            <IconButton
+                              edge="end"
+                              aria-label="delete"
+                              onClick={() => {
+                                setGoods((prevGoods) =>
+                                  prevGoods.map((prevGood) =>
+                                    prevGood === good
+                                      ? {
+                                          ...prevGood,
+                                          selectNum: prevGood.selectNum - 1,
+                                        }
+                                      : prevGood
+                                  )
+                                );
+                              }}
+                              className="pl-2]"
+                            >
+                              <ArrowDownwardIcon />
+                            </IconButton>
+                            <IconButton
+                              edge="end"
+                              aria-label="delete"
+                              onClick={() => {
+                                setGoods((prevGoods) =>
                                   prevGoods.filter((a) => a.good !== good.good)
                                 );
                               }}
@@ -79,51 +117,12 @@ export const CartModal = () => {
                             <FolderIcon />
                           </Avatar>
                         </ListItemAvatar>
-                        <div className="flex space-x-4">
+                        <div className="flex space-x-4 grow">
                           <div>
-                            <p className="text-2xl ">{good.good}</p>
+                            <p className="text-2xl pr-[60px]">
+                              {good.good} {good.selectNum}個
+                            </p>
                           </div>
-
-                          <p className="text-2xl pl-3 ">{good.selectNum}個</p>
-                          <IconButton
-                            edge="end"
-                            aria-label="delete"
-                            onClick={() => {
-                              setGoods((prevGoods) =>
-                                prevGoods.map((prevGood) =>
-                                  prevGood === good
-                                    ? {
-                                        ...prevGood,
-                                        selectNum: prevGood.selectNum + 1,
-                                      }
-                                    : prevGood
-                                )
-                              );
-                            }}
-                            className="pl-4"
-                          >
-                            <ArrowUpwardIcon />
-                          </IconButton>
-
-                          <IconButton
-                            edge="end"
-                            aria-label="delete"
-                            onClick={() => {
-                              setGoods((prevGoods) =>
-                                prevGoods.map((prevGood) =>
-                                  prevGood === good
-                                    ? {
-                                        ...prevGood,
-                                        selectNum: prevGood.selectNum - 1,
-                                      }
-                                    : prevGood
-                                )
-                              );
-                            }}
-                            className="pl-2]"
-                          >
-                            <ArrowDownwardIcon />
-                          </IconButton>
                         </div>
                       </ListItem>
                     )
