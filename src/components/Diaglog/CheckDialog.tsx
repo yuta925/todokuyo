@@ -11,9 +11,6 @@ import { SimpleDialog } from "./OrderDialog";
 import { OrderContext } from "../../pages/Order";
 import { useContext } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
-import FolderIcon from "@mui/icons-material/Folder";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 export const CheckDialog: FC = () => {
   const { setOpen1, setOpen2, setIsLoading, goods, setGoods } =
