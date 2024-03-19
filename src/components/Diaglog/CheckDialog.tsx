@@ -50,7 +50,7 @@ export const CheckDialog: FC = () => {
                   </ListItem>
                 ))}
               </List>
-      <h1 className="h-[30%] flex basis-14 flex-row justify-center items-end text-2xl pb-2">以上の内容で注文しますか？</h1>
+      <h1 className="h-[30%] flex basis-14 flex-row text-center items-end text-2xl pb-2">以上の内容で注文しますか？</h1>
       <div className="flex basis-14 flex-row justify-center items-end mb-4 h-[70%]">
         <Button variant="outlined" size="large" onClick={submitFn} className="w-[110px] h-[50px]"><p className="text-xl">はい</p></Button>
         <Button variant="outlined" size="large" onClick={() => setOpen1(false)} color="error" className="w-[110px] h-[50px]"><p className="text-xl">いいえ</p></Button>
