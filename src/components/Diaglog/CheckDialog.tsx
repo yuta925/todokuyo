@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import {
   Avatar,
   Button,
@@ -15,10 +15,12 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import FolderIcon from "@mui/icons-material/Folder";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../firebase";
+import { UserContext } from "../SelectLocation/SelectLocation";
 
 export const CheckDialog: FC = () => {
   const { setOpen1, setOpen2, setIsLoading, goods, setGoods } =
     useContext(OrderContext);
+  const { userInfo, setUserInfo } = useContext(UserContext);
   const [dense, setDense] = useState(false);
 
   const submitFn = () => {
@@ -29,8 +31,15 @@ export const CheckDialog: FC = () => {
     }, 1000);
     const goodsRef = collection(db, "goods");
     goods.forEach(async (good) => {
-      await addDoc(goodsRef, { goodName: good.good, num: good.selectNum });
+      await addDoc(goodsRef, {
+        goodName: good.good,
+        num: good.selectNum,
+        userName: userInfo.userName,
+        address: userInfo.address,
+        schedule: userInfo.schedule,
+      });
     });
+    console.log(userInfo);
   };
 
   return (

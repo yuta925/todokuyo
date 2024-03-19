@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -15,12 +15,47 @@ import { useNavigate } from "react-router-dom";
 import SendIcon from "@mui/icons-material/Send";
 import { Locations } from "../../assets/Locations";
 
+// UserInfoTypeの配列を含むデフォルト値を持つUserContextの作成
+export const UserContext = createContext<{
+  userInfo: UserInfoType;
+  setUserInfo: React.Dispatch<React.SetStateAction<UserInfoType[]>>;
+}>({
+  userInfo: {
+    schedule: "",
+    address: "",
+    userName: "",
+  }, // 空の配列をデフォルトのuserInfoとして設定
+  setUserInfo: () => {}, // デフォルトのsetUserInfo関数（何もしない）
+});
+
+type UserInfoType = { schedule: string; address: string; userName: string };
+
 export const SelectLocation = () => {
   const [location, setLocation] = useState<string>("");
-  const navigate = useNavigate();
+  const [schedule, setSchedule] = useState<string>(dayjs().format());
+  const [userName, setUserName] = useState<string>("");
 
-  const handleChange = (event: SelectChangeEvent) => {
+  const navigate = useNavigate();
+  const [userInfo, setUserInfo] = useState<UserInfoType>({
+    schedule: "",
+    address: "",
+    userName: "",
+  });
+
+  useEffect(() => {
+    setUserInfo({ schedule: schedule, address: location, userName: userName });
+  }, [schedule, location, userName]);
+
+  const handleScheduleChange = (newValue: dayjs.Dayjs | null) => {
+    setSchedule(newValue ? newValue.format() : dayjs().format());
+  };
+
+  const handleLocationChange = (event: SelectChangeEvent) => {
     setLocation(event.target.value as string);
+  };
+
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserName(event.target.value);
   };
 
   return (
@@ -37,7 +72,10 @@ export const SelectLocation = () => {
               }}
             >
               <DemoItem>
-                <MobileDatePicker defaultValue={dayjs()} />
+                <MobileDatePicker
+                  defaultValue={dayjs()}
+                  onChange={handleScheduleChange}
+                />
               </DemoItem>
             </DemoContainer>
           </LocalizationProvider>
@@ -53,7 +91,7 @@ export const SelectLocation = () => {
                 id="demo-simple-select"
                 value={location}
                 label="場所"
-                onChange={handleChange}
+                onChange={handleLocationChange}
               >
                 {Locations.map((location) => (
                   <MenuItem value={location.id} key={location.address}>
@@ -80,13 +118,16 @@ export const SelectLocation = () => {
             label="名前"
             variant="outlined"
             className="w-full"
+            onChange={handleNameChange}
           />
           {/* </Box> */}
         </div>
 
         <div className="flex justify-center">
           <button
-            onClick={() => navigate("/order")}
+            onClick={() => {
+              navigate("/order");
+            }}
             className="w-[200px] h-[100px] bg-blue-500 text-white round rounded-[30px] p-4"
           >
             <p className="text-[30px]">送信</p>
