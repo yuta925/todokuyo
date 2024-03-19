@@ -3,7 +3,6 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import { styled } from "@mui/material/styles";
 import Avatar from "@mui/material/Avatar";
@@ -15,8 +14,8 @@ import { useContext } from "react";
 import { OrderContext } from "../../pages/Order";
 import Modal from "react-modal";
 import { useModalScrollLock } from "../../hooks/useModalScrollLock";
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 const Demo = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -59,17 +58,19 @@ export const CartModal = () => {
                     good.selected && (
                       <ListItem
                         secondaryAction={
-                          <IconButton
-                            edge="end"
-                            aria-label="delete"
-                            onClick={() => {
-                              setGoods((prevGoods) =>
-                                prevGoods.filter((a) => a.good !== good.good)
-                              );
-                            }}
-                          >
-                            <DeleteIcon />
-                          </IconButton>
+                          <>
+                            <IconButton
+                              edge="end"
+                              aria-label="delete"
+                              onClick={() => {
+                                setGoods((prevGoods) =>
+                                  prevGoods.filter((a) => a.good !== good.good)
+                                );
+                              }}
+                            >
+                              <DeleteIcon />
+                            </IconButton>
+                          </>
                         }
                       >
                         <ListItemAvatar>
@@ -78,11 +79,52 @@ export const CartModal = () => {
                             <FolderIcon />
                           </Avatar>
                         </ListItemAvatar>
-                        <ListItemText primary={good.good} />
-                        <ListItemText
-                          primary={good.selectNum}
-                          className="right-0"
-                        />
+                        <div className="flex space-x-4">
+                          <div>
+                            <p className="text-2xl ">{good.good}</p>
+                          </div>
+
+                          <p className="text-2xl pl-3 ">{good.selectNum}個</p>
+                          <IconButton
+                            edge="end"
+                            aria-label="delete"
+                            onClick={() => {
+                              setGoods((prevGoods) =>
+                                prevGoods.map((prevGood) =>
+                                  prevGood === good
+                                    ? {
+                                        ...prevGood,
+                                        selectNum: prevGood.selectNum + 1,
+                                      }
+                                    : prevGood
+                                )
+                              );
+                            }}
+                            className="pl-4"
+                          >
+                            <ArrowUpwardIcon />
+                          </IconButton>
+
+                          <IconButton
+                            edge="end"
+                            aria-label="delete"
+                            onClick={() => {
+                              setGoods((prevGoods) =>
+                                prevGoods.map((prevGood) =>
+                                  prevGood === good
+                                    ? {
+                                        ...prevGood,
+                                        selectNum: prevGood.selectNum - 1,
+                                      }
+                                    : prevGood
+                                )
+                              );
+                            }}
+                            className="pl-2]"
+                          >
+                            <ArrowDownwardIcon />
+                          </IconButton>
+                        </div>
                       </ListItem>
                     )
                   );

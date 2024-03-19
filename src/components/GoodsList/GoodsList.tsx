@@ -36,13 +36,12 @@ export const GoodsList = () => {
               onClick={() => {
                 selectGood({ good });
                 good.selected = !good.selected;
+                good.selected ||
+                  setGoods((prevGoods) =>
+                    prevGoods.filter((a) => a.good !== good.goodname)
+                  );
               }}
             />
-            {goods.map((good) => {
-              return (
-                <>{good.selected ?? <h1 className="bg-black">登録済み</h1>}</>
-              );
-            })}
             <div className="grid grid-cols-7">
               <p className="border border-t-zinc-950 col-start-1 col-end-5">
                 {good.goodname}
