@@ -93,7 +93,7 @@ export const CartModal = () => {
                                   )
                                 );
                               }}
-                              className="pl-2]"
+                              className="pl-2"
                             >
                               <ArrowDownwardIcon />
                             </IconButton>
@@ -119,7 +119,7 @@ export const CartModal = () => {
                         </ListItemAvatar>
                         <div className="flex space-x-4 grow">
                           <div>
-                            <p className="text-2xl pr-[60px]">
+                            <p className="text-2xl">
                               {good.good} {good.selectNum}個
                             </p>
                           </div>
