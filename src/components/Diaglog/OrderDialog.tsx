@@ -10,12 +10,12 @@ export const SimpleDialog: FC = () => {
   return (
     <>
       <Dialog open={open2} className="flex flex-row justify-center">
-        <h1 className="mx-[20px] my-[40px] text-[25px]">
+        <h1 className="mx-[50px] my-[65px] text-[25px]">
           <span>注文を確定しました</span>
         </h1>
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-8  ">
           <Button className="w-[60%]" onClick={() => navigate("/")} >
-            <span className="w-[80%] text-[18px]">Homeへ戻る</span>
+            <span className="w-[80%] text-[23px]">Homeへ戻る</span>
           </Button>
         </div>
       </Dialog>
