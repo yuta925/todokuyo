@@ -5,7 +5,7 @@ import { Header } from "../components/Header/Header";
 export const Home = () => {
   return (
     <div>
-      <Header title="移動販売ページ" />
+      <Header title="Todokuyo" />
       <SelectLocation />
     </div>
   );

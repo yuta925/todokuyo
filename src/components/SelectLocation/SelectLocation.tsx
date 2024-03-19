@@ -25,16 +25,16 @@ export const SelectLocation = () => {
 
   return (
     <form>
-      <div className="flex basis-8 grow flex-col gap-y-8">
-        <div>
-          <p className="ml-[10%] w-[80%] text-[30px]">日程</p>
+      <div className="flex basis-8 grow flex-col gap-y-8 ">
+      <div className="ml-[10%] w-[80%]">
+          <p className="text-[30px]">日程</p>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer
               components={["DatePicker"]}
-              sx={{
-                width: "80%",
-                marginLeft: "10%",
-              }}
+              // sx={{
+              //   width: "80%",
+              //   marginLeft: "10%",
+              // }}
             >
               <DemoItem>
                 <MobileDatePicker defaultValue={dayjs()} />
