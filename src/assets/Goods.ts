@@ -7,4 +7,12 @@ export const Goods = [
   { goodname: "納豆", img: "natto.png", selected: false },
   { goodname: "沢庵", img: "takuwan.png", selected: false },
   { goodname: "味噌", img: "miso.png", selected: false },
+  { goodname: "豆腐", img: "tofu.jpg", selected: false },
+  { goodname: "お茶", img: "tea.jpg", selected: false },
+  { goodname: "コーヒー", img: "coffee.jpg", selected: false },
+  { goodname: "パン", img: "pan.png", selected: false },
+  { goodname: "魚", img: "sakana.jpg", selected: false },
+  { goodname: "肉", img: "niku.jpeg", selected: false },
+  { goodname: "卵", img: "tamago.jpg", selected: false },
+  { goodname: "クッキー", img: "cookie.webp", selected: false },
 ];
