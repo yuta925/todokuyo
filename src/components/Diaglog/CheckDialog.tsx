@@ -28,50 +28,12 @@ export const CheckDialog: FC = () => {
   };
 
   return (
-    <div className="flex flex-col mx-4 mt-6 h-auto w-auto">
+    <div className="flex flex-col mx-6 mt-6 h-auto w-auto">
       <List dense={true}>
         {goods.map((good) => (
           <ListItem
             secondaryAction={
               <>
-                <IconButton
-                  edge="end"
-                  aria-label="delete"
-                  onClick={() => {
-                    setGoods((prevGoods) =>
-                      prevGoods.map((prevGood) =>
-                        prevGood === good
-                          ? {
-                              ...prevGood,
-                              selectNum: prevGood.selectNum + 1,
-                            }
-                          : prevGood
-                      )
-                    );
-                  }}
-                  className="pl-4"
-                >
-                  <ArrowUpwardIcon />
-                </IconButton>
-                <IconButton
-                  edge="end"
-                  aria-label="delete"
-                  onClick={() => {
-                    setGoods((prevGoods) =>
-                      prevGoods.map((prevGood) =>
-                        prevGood === good
-                          ? {
-                              ...prevGood,
-                              selectNum: prevGood.selectNum - 1,
-                            }
-                          : prevGood
-                      )
-                    );
-                  }}
-                  className="grid col-start-8 col-end-9"
-                >
-                  <ArrowDownwardIcon />
-                </IconButton>
                 <IconButton
                   edge="end"
                   aria-label="delete"
@@ -87,18 +49,15 @@ export const CheckDialog: FC = () => {
             }
           >
             <ListItemAvatar>
-              <Avatar>
-                {/** ここのアイコン変える */}
-                <FolderIcon />
-              </Avatar>
+              <Avatar>{/* <FolderIcon /> */}</Avatar>
             </ListItemAvatar>
-            <p className="text-xl">
+            <p className="text-lg">
               {good.good} {good.selectNum}個
             </p>
           </ListItem>
         ))}
       </List>
-      <h1 className="h-[30%] flex basis-14 flex-row justify-center items-end text-2xl pb-2">
+      <h1 className="h-[30%] flex basis-14 flex-row justify-center items-end text-xl pb-2 px-2">
         以上の内容で注文しますか？
       </h1>
       <div className="flex basis-14 flex-row justify-center items-end mb-4 h-[70%]">
